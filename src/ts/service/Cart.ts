@@ -19,12 +19,8 @@ export default class Cart {
     return [...this._items];
   }
 
-  get sum(): number {
-    let sum = 0;
-    for (const item of this._items) {
-      item.quantity ? (sum += item.price * item.quantity) : (sum += item.price);
-    }
-    return sum;
+  sum(): number {
+    return this.items.reduce( (sum, item) => sum + item.price, 0);
   }
 
   sumDiscount(discount: number) {
